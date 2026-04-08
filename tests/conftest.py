@@ -6,9 +6,11 @@ from pages.mail_page import MailPage
 @pytest.fixture(scope="function")
 def page():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
+        browser = p.chromium.launch(headless=False)
+        context = browser.new_context(locale="sk-SK")
+        page = context.new_page()
         yield page
+        context.close()
         browser.close()
 
 @pytest.fixture

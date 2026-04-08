@@ -1,18 +1,74 @@
 # Annea QA Automation Assignment
 
-Professional E2E test suite for Seznam.cz email workflow using Playwright and Python.
+[![Playwright E2E Tests](https://github.com/MilJav11/qa-automation-annea/actions/workflows/tests.yml/badge.svg)](https://github.com/MilJav11/qa-automation-annea/actions/workflows/tests.yml)
+
+Professional E2E test suite automating the Seznam.cz email workflow using Playwright and Python.
+
+## 🎯 What is Tested (Test Description)
+
+This test suite covers the critical business path (Happy Path) of sending an email with an attachment. The automated flow verifies that a user can:
+
+1. Successfully log into a Seznam.cz email account (handling dynamic cookie/ad banners).
+2. Navigate directly to the mailbox and initialize a new email to a predefined contact.
+3. Dynamically generate and attach a local text document (`test_attachment.txt`).
+4. Send the email and explicitly wait for the UI notification verifying successful delivery.
+5. Safely log out of the account via the profile menu.
+
+## 📊 Test Coverage Info
+
+As an E2E UI automation suite, coverage is focused on **Functional Business Flows** rather than underlying code line coverage.
+
+- **UI Coverage:** Login Page, Mailbox Dashboard, Email Composer Modal, File Uploader, Profile/Logout Menu.
+- **Browser Coverage:** Configured for Chromium (Headless mode in CI/CD pipeline, Headed mode supported for local debugging).
+- **Resilience Coverage:** Handles strict-mode violations, dynamic element locators, and unpredictable network/UI delays using Playwright's auto-waiting and explicit `timeout`/`networkidle` strategies.
 
 ## 🚀 Features
 
-- **BDD Framework:** Human-readable tests using Gherkin (Pytest-BDD).
-- **Page Object Model:** Clean separation of test logic and UI selectors.
-- **CI/CD Integrated:** GitHub Actions workflow included.
-- **Security:** Credential management via environment variables.
+- **BDD Framework:** Human-readable tests using Gherkin (`pytest-bdd`).
+- **Page Object Model (POM):** Clean separation of test logic and UI locators.
+- **CI/CD Integrated:** Automated test execution on every push via GitHub Actions.
+- **Security:** Credential management using environment variables.
 
-## 🛠️ Setup
+## 📂 Project Structure
 
-1. Clone the repo.
-2. Create a `.env` file with `TEST_EMAIL` and `TEST_PASSWORD`.
-3. Run `pip install -r requirements.txt`.
-4. Run `playwright install chromium`.
-5. Execute tests using `pytest`.
+````text
+├── .github/workflows/      # CI/CD pipeline definition
+├── pages/                  # Page Object Model classes
+├── tests/
+│   ├── step_definitions/   # Python code executing the BDD steps
+│   ├── email_workflow.feature # Gherkin scenario
+│   └── conftest.py         # Playwright fixtures and setup
+├── requirements.txt        # Python dependencies
+└── README.md
+```
+
+## 🛠️ Setup & Execution
+
+### Prerequisites
+- Python 3.10+
+- Node.js (for Playwright binaries)
+
+### Installation
+1. Clone the repository.
+2. Create a `.env` file in the root directory and add your credentials:
+   ```env
+   TEST_EMAIL=your_test_email@seznam.cz
+   TEST_PASSWORD=your_password
+3. Install dependencies:
+```bash
+`pip install -r requirements.txt
+````
+
+4. Install Playwright browsers:
+
+```bash
+playwright install chromium
+```
+
+### Running Tests
+
+Execute the test suite using pytest:
+
+```bash
+pytest
+```
