@@ -1,12 +1,12 @@
 # Annea QA Automation Assignment
 
-[![Playwright E2E Tests](https://github.com/MilJav11/qa-automation-annea/actions/workflows/tests.yml/badge.svg)](https://github.com/MilJav11/qa-automation-annea/actions/workflows/tests.yml)
+[![Playwright E2E Tests](https://github.com/MilJav11/qa-automation-annea/actions/workflows/playwright.yml/badge.svg)](https://github.com/MilJav11/qa-automation-annea/actions)
 
 Professional E2E test suite automating the Seznam.cz email workflow using Playwright and Python.
 
 ## 🎯 What is Tested (Test Description)
 
-This test suite covers the critical business path (Happy Path) of sending an email with an attachment. The automated flow verifies that a user can:
+This test suite covers the critical business path (Happy Path) of sending an email via the Seznam.cz web client:
 
 1. Successfully log into a Seznam.cz email account (handling dynamic cookie/ad banners).
 2. Navigate directly to the mailbox and initialize a new email to a predefined contact.
@@ -16,11 +16,11 @@ This test suite covers the critical business path (Happy Path) of sending an ema
 
 ## 📊 Test Coverage Info
 
-As an E2E UI automation suite, coverage is focused on **Functional Business Flows** rather than underlying code line coverage.
+As an E2E UI automation suite, coverage is focused on **Functional Business Flows**:
 
-- **UI Coverage:** Login Page, Mailbox Dashboard, Email Composer Modal, File Uploader, Profile/Logout Menu.
-- **Browser Coverage:** Configured for Chromium (Headless mode in CI/CD pipeline, Headed mode supported for local debugging).
-- **Resilience Coverage:** Handles strict-mode violations, dynamic element locators, and unpredictable network/UI delays using Playwright's auto-waiting and explicit `timeout`/`networkidle` strategies.
+- **UI Coverage:** Login Page, Mailbox Dashboard, Email Composer Modal, File Upload Dialog, Success Notification, Logout Flow.
+- **Browser Coverage:** Configured for Chromium (Headless mode in CI/CD pipeline, headed mode for local development).
+- **Resilience Coverage:** Handles strict-mode violations, dynamic element locators, and conditional UI states (e.g., cookie banners).
 
 ## 🚀 Features
 
@@ -29,9 +29,9 @@ As an E2E UI automation suite, coverage is focused on **Functional Business Flow
 - **CI/CD Integrated:** Automated test execution on every push via GitHub Actions.
 - **Security:** Credential management using environment variables.
 
-## 📂 Project Structure
+## 📁 Project Structure
 
-````text
+```text
 ├── .github/workflows/      # CI/CD pipeline definition
 ├── pages/                  # Page Object Model classes
 ├── tests/
@@ -42,22 +42,34 @@ As an E2E UI automation suite, coverage is focused on **Functional Business Flow
 └── README.md
 ```
 
-## 🛠️ Setup & Execution
+## 🔧 Setup & Execution
 
 ### Prerequisites
+
 - Python 3.10+
 - Node.js (for Playwright binaries)
 
 ### Installation
-1. Clone the repository.
-2. Create a `.env` file in the root directory and add your credentials:
-   ```env
-   TEST_EMAIL=your_test_email@seznam.cz
-   TEST_PASSWORD=your_password
-3. Install dependencies:
+
+1. Clone the repository:
+
 ```bash
-`pip install -r requirements.txt
-````
+git clone https://github.com/MilJav11/qa-automation-annea.git
+cd qa-automation-annea
+```
+
+2. Create a `.env` file in the root directory and add your credentials:
+
+```
+TEST_EMAIL=your_test_email@seznam.cz
+TEST_PASSWORD=your_password
+```
+
+3. Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
 
 4. Install Playwright browsers:
 
