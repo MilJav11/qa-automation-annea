@@ -1,6 +1,6 @@
 # Annea QA Automation Assignment
 
-[![Playwright E2E Tests](https://github.com/MilJav11/qa-automation-annea/actions/workflows/playwright.yml/badge.svg)](https://github.com/MilJav11/qa-automation-annea/actions)
+[![Playwright E2E Tests](https://github.com/MilJav11/qa-automation-annea/actions/workflows/tests.yml/badge.svg)](https://github.com/MilJav11/qa-automation-annea/actions/workflows/tests.yml)
 
 Professional E2E test suite automating the Seznam.cz email workflow using Playwright and Python.
 
