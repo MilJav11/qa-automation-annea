@@ -1,4 +1,4 @@
-# Annea QA Automation Assignment
+# Playwright E2E Automation Portfolio Project
 
 [![Playwright E2E Tests](https://github.com/MilJav11/qa-automation-annea/actions/workflows/tests.yml/badge.svg)](https://github.com/MilJav11/qa-automation-annea/actions/workflows/tests.yml)
 
